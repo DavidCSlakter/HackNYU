@@ -29,6 +29,8 @@ class ContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationController?.isNavigationBarHidden = true;
+        
         let screenSize = UIScreen.main.bounds.size
         view.backgroundColor = .black
         
@@ -47,6 +49,8 @@ class ContainerViewController: UIViewController {
         // location
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        
+        showMenuButtonInView(view: self.view)
 		
     }
     
@@ -126,6 +130,12 @@ class ContainerViewController: UIViewController {
             result = result + 360
         }
         return result
+    }
+    
+    func showMenuButtonInView(view: UIView){
+        let button = UIButton(frame: CGRect(x: 635, y: 64, width: 87, height: 90))
+        button.setImage(#imageLiteral(resourceName: "Menu"), for: .normal)
+        view.addSubview(button)
     }
     
     // MARK: - spinner
